@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class pov extends Model
 {
     use HasFactory;
+    function client(){
+        return $this->belongsTo(client::class);
+    }
+    function appliance(){
+        return $this->belongsTo(appliance::class);
+    }
+
 }

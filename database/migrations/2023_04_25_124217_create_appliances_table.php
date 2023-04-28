@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('appliances', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
+            $table->string("libelle_appliance");
             $table->foreignId('type_id')->constrained('types');
             $table->string("dbid");
             $table->boolean("disponabilite")->default(false);

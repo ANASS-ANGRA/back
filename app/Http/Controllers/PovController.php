@@ -5,62 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\pov;
 use App\Http\Requests\StorepovRequest;
 use App\Http\Requests\UpdatepovRequest;
+use Illuminate\Http\Request;
 
 class PovController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function ajouter_pov(Request $request){
+        $pov=new pov;
+        $pov->libelle_pov=$request->libelle;
+        $pov->appliance_id=$request->appliance;
+        $pov->client_id=$request->client;
+        $pov->date_debut=$request->date_d;
+        $pov->date_fin=$request->date_f;
+        $pov->description=$request->descreption;
+        $pov->compte_manager=$request->compte;
+        $pov->ingenier_cybersecurite=$request->ingeneur;
+        $pov->analyse_cybersecurite=$request->analyse;
+        $pov->save();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function all_pov(){
+        $povs=pov::with("client")->with("appliance")->get();
+        return $povs;
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorepovRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(pov $pov)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(pov $pov)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatepovRequest $request, pov $pov)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(pov $pov)
-    {
-        //
+    public function delet_pov($id){
+        $pov=pov::find($id);
+        $pov->delete();
     }
 }

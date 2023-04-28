@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('appliance_id')->constrained('appliances');
             $table->foreignId('client_id')->constrained('clients');
             $table->date("date_debut");
-            $table->date("date-fin");
+            $table->date("date_fin");
             $table->string("description");
             $table->string("compte_manager");
             $table->string("ingenier_cybersecurite");

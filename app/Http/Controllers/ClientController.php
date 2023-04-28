@@ -21,4 +21,9 @@ class ClientController extends Controller
      $clients=client::all();
      return $clients;
    }
+
+    public function delete_client($id){
+      $client = client::find($id);
+      $client->delete();
+    }
 }

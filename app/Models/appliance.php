@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class appliance extends Model
 {
     use HasFactory;
-    protected $fillable = ['libelle', 'type_id', 'dbid', 'reference', 'disponabilite'];
+    protected $fillable = ['libelle_appliance', 'type_id', 'dbid', 'reference', 'disponabilite'];
 
     function type(){
         return $this->belongsTo(type::class);
     }
+    function client(){
+       return $this->hasMany(client::class);
+    }
+
 }
