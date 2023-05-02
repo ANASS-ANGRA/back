@@ -14,5 +14,11 @@ class pov extends Model
     function appliance(){
         return $this->belongsTo(appliance::class);
     }
+    function science(){
+        return $this->hasMany(sceance::class);
+    }
+    function suivi(){
+        return $this->hasOne(suivi::class);
+    }
 
 }

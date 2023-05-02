@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('suivis', function (Blueprint $table) {
             $table->id();
-            $table->boolean("offre_commerciel");
+            $table->string("offre_commerciel");
             $table->float("mantant");
             $table->foreignId('type_prsentation_id')->constrained('type_prsentations');
             $table->string("compte_rendu");
