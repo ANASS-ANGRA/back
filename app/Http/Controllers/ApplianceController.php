@@ -14,22 +14,13 @@ use PDF;
 class ApplianceController extends Controller
 {
    public function ajouter(Request $request){
-    $app = Appliance::where('libelle_appliance', $request->libelle)->first();
 
-    if (isset($app->libelle_appliance)) {
-        $app->libelle_appliance = $request->libelle;
-        $app->type_id = $request->type;
-        $app->dbid = $request->DBID;
-        $app->reference = $request->reference;
-        $app->save();
-    } else {
         $appliance = Appliance::create([
             'libelle_appliance' => $request->libelle,
             'type_id' => $request->type,
             'dbid' => $request->DBID,
             'reference' => $request->reference
         ]);
-    }
    }
    public function tous_appliance(){
       $appliances=appliance::with("type")->get();
@@ -54,6 +45,14 @@ class ApplianceController extends Controller
     return $pdf->download('test.pdf');
 
  }
-
-
+ public function edit(Request $request){
+    $app=appliance::find($request->id);
+    if (isset($app->id)) {
+        $app->libelle_appliance = $request->libelle;
+        $app->type_id = $request->type;
+        $app->dbid = $request->DBID;
+        $app->reference = $request->reference;
+        $app->save();
+    }
+}
 }

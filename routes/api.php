@@ -26,6 +26,7 @@ Route::get('delete_appliance/{id}',"ApplianceController@delet_appliance" );
 Route::get("applience/{id}","ApplianceController@appliance");
 Route::get("recherche_appliance/{appliance}/{client}","ApplianceController@recherche_appliance");
 Route::get("pdf/{id}" ,"ApplianceController@pdf_detail");
+Route::post("edit" ,"ApplianceController@edit");
 
 Route::post("new_client","ClientController@new_client");
 Route::get("clients","ClientController@clients");
