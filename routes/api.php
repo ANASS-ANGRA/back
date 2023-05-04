@@ -32,9 +32,11 @@ Route::post("new_client","ClientController@new_client");
 Route::get("clients","ClientController@clients");
 Route::get("delet_client/{id}","ClientController@delete_client");
 Route::get("client_contact/{id}","ClientController@client_contact");
+Route::post("edit_client" ,"ClientController@edit");
 
 
 Route::post("ajouter_pov","PovController@ajouter_pov");
 Route::get("povs","PovController@all_pov");
 Route::get("delete_pov/{id}","PovController@delet_pov");
 Route::get("detail_pov/{id}","PovController@info_pov");
+Route::post("/pov_edit","PovController@edit");
