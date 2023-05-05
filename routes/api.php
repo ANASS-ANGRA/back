@@ -40,3 +40,14 @@ Route::get("povs","PovController@all_pov");
 Route::get("delete_pov/{id}","PovController@delet_pov");
 Route::get("detail_pov/{id}","PovController@info_pov");
 Route::post("/pov_edit","PovController@edit");
+
+Route::get("delete_contact/{id}","ContactController@delet");
+Route::post("edit_contact","ContactController@edit");
+Route::post("ajouter_contact","ContactController@ajouter");
+
+
+Route::post("ajouter_sceance" , "SceanceController@ajouter");
+Route::post("edit_seance" , "SceanceController@edit");
+Route::get("delet_seance/{id}","SceanceController@delet");
+
+Route::get("delete_suivi/{id}","SuiviController@delete");

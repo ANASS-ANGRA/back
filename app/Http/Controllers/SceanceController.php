@@ -5,62 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\sceance;
 use App\Http\Requests\StoresceanceRequest;
 use App\Http\Requests\UpdatesceanceRequest;
-
+use Illuminate\Http\Request;
 class SceanceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function ajouter(Request $request){
+        $sceance = new sceance ;
+        $sceance->date_sceance=$request->date;
+        $sceance->resumer=$request->resumer;
+        $sceance->participant = $request->participant;
+        $sceance->pov_id = $request->pov;
+        $sceance->save();
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoresceanceRequest $request)
-    {
-        //
+    public function edit(Request $request){
+        $sceance = sceance::find($request->id);
+        if(isset($sceance->id)){
+            $sceance->date_sceance=$request->date;
+          $sceance->resumer=$request->resumer;
+          $sceance->participant = $request->participant;
+           $sceance->save();
+        }
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(sceance $sceance)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(sceance $sceance)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatesceanceRequest $request, sceance $sceance)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(sceance $sceance)
-    {
-        //
+    public function delet($id){
+        $sceance = sceance::find($id);
+        $sceance->delete();
     }
 }
